@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LoanModelStoreContainer" CdmEntityContainer="LoanEntities8">
+    <EntitySetMapping Name="tblAccounts">
+      <EntityTypeMapping TypeName="LoanModel.tblAccount">
+        <MappingFragment StoreEntitySet="tblAccount">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBranches">
+      <EntityTypeMapping TypeName="LoanModel.tblBranch">
+        <MappingFragment StoreEntitySet="tblBranch">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BrName" ColumnName="BrName" />
+          <ScalarProperty Name="BrCode" ColumnName="BrCode" />
+          <ScalarProperty Name="BrAddress" ColumnName="BrAddress" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCostomers">
+      <EntityTypeMapping TypeName="LoanModel.tblCostomer">
+        <MappingFragment StoreEntitySet="tblCostomer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CodeMeli" ColumnName="CodeMeli" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="NumberOfShenasname" ColumnName="NumberOfShenasname" />
+          <ScalarProperty Name="SeryalOfShenasname" ColumnName="SeryalOfShenasname" />
+          <ScalarProperty Name="MahalSodour" ColumnName="MahalSodour" />
+          <ScalarProperty Name="Tell" ColumnName="Tell" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="CodePosti" ColumnName="CodePosti" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Jender" ColumnName="Jender" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblHesabs">
+      <EntityTypeMapping TypeName="LoanModel.tblHesab">
+        <MappingFragment StoreEntitySet="tblHesab">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="HesabNumber" ColumnName="HesabNumber" />
+          <ScalarProperty Name="HesabType" ColumnName="HesabType" />
+          <ScalarProperty Name="Mojodi" ColumnName="Mojodi" />
+          <ScalarProperty Name="CostomerId" ColumnName="CostomerId" />
+          <ScalarProperty Name="CostomerHoghoghiId" ColumnName="CostomerHoghoghiId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPardakhtAghsats">
+      <EntityTypeMapping TypeName="LoanModel.tblPardakhtAghsat">
+        <MappingFragment StoreEntitySet="tblPardakhtAghsat">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateOfPardakht" ColumnName="DateOfPardakht" />
+          <ScalarProperty Name="ShomareGhest" ColumnName="ShomareGhest" />
+          <ScalarProperty Name="VamId" ColumnName="VamId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblVams">
+      <EntityTypeMapping TypeName="LoanModel.tblVam">
+        <MappingFragment StoreEntitySet="tblVam">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="VamType" ColumnName="VamType" />
+          <ScalarProperty Name="NumberContract" ColumnName="NumberContract" />
+          <ScalarProperty Name="MablaghVam" ColumnName="MablaghVam" />
+          <ScalarProperty Name="PishDaryaft" ColumnName="PishDaryaft" />
+          <ScalarProperty Name="BaqhiMande" ColumnName="BaqhiMande" />
+          <ScalarProperty Name="NerkhSod" ColumnName="NerkhSod" />
+          <ScalarProperty Name="TedadAghsat" ColumnName="TedadAghsat" />
+          <ScalarProperty Name="MablaghGhest" ColumnName="MablaghGhest" />
+          <ScalarProperty Name="MablaghAsloFara" ColumnName="MablaghAsloFara" />
+          <ScalarProperty Name="Eltezam" ColumnName="Eltezam" />
+          <ScalarProperty Name="DateOfStart" ColumnName="DateOfStart" />
+          <ScalarProperty Name="DateOfEnd" ColumnName="DateOfEnd" />
+          <ScalarProperty Name="HesabId" ColumnName="HesabId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

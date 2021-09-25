@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LoanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Account" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BrCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="BrAddress" Type="nvarchar(max)" />
+          <Property Name="AccountId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblCostomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeMeli" Type="nchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Family" Type="nvarchar" MaxLength="50" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="nchar" MaxLength="10" />
+          <Property Name="NumberOfShenasname" Type="nchar" MaxLength="10" />
+          <Property Name="SeryalOfShenasname" Type="nvarchar" MaxLength="50" />
+          <Property Name="MahalSodour" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tell" Type="nchar" MaxLength="12" />
+          <Property Name="Fax" Type="nchar" MaxLength="12" />
+          <Property Name="Mobile" Type="nchar" MaxLength="12" />
+          <Property Name="CodePosti" Type="nchar" MaxLength="10" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Jender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblHesab">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HesabNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="HesabType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mojodi" Type="bigint" />
+          <Property Name="CostomerId" Type="bigint" />
+          <Property Name="CostomerHoghoghiId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblPardakhtAghsat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOfPardakht" Type="nchar" MaxLength="10" />
+          <Property Name="ShomareGhest" Type="int" />
+          <Property Name="VamId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblVam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VamType" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumberContract" Type="nvarchar" MaxLength="50" />
+          <Property Name="MablaghVam" Type="bigint" />
+          <Property Name="PishDaryaft" Type="bigint" />
+          <Property Name="BaqhiMande" Type="bigint" />
+          <Property Name="NerkhSod" Type="int" />
+          <Property Name="TedadAghsat" Type="int" />
+          <Property Name="MablaghGhest" Type="bigint" />
+          <Property Name="MablaghAsloFara" Type="bigint" />
+          <Property Name="Eltezam" Type="int" />
+          <Property Name="DateOfStart" Type="nchar" MaxLength="10" />
+          <Property Name="DateOfEnd" Type="nchar" MaxLength="10" />
+          <Property Name="HesabId" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Loan.dbo.ReportVams' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ReportVams">
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Family" Type="nvarchar" MaxLength="50" />
+          <Property Name="HesabNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShomareGhest" Type="int" />
+          <Property Name="DateOfPardakht" Type="nchar" MaxLength="10" />
+          <Property Name="DateOfStart" Type="nchar" MaxLength="10" />
+          <Property Name="MablaghAsloFara" Type="bigint" />
+          <Property Name="TedadAghsat" Type="int" />
+          <Property Name="NerkhSod" Type="int" />
+          <Property Name="BaqhiMande" Type="bigint" />
+          <Property Name="MablaghVam" Type="bigint" />
+          <Property Name="NumberContract" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <Association Name="FK_tblBranch_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblBranch" Type="Self.tblBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblBranch">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHesab_tblCostomer">
+          <End Role="tblCostomer" Type="Self.tblCostomer" Multiplicity="0..1" />
+          <End Role="tblHesab" Type="Self.tblHesab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCostomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblHesab">
+              <PropertyRef Name="CostomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPardakhtAghsat_tblVam">
+          <End Role="tblVam" Type="Self.tblVam" Multiplicity="1" />
+          <End Role="tblPardakhtAghsat" Type="Self.tblPardakhtAghsat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVam">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblPardakhtAghsat">
+              <PropertyRef Name="VamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVam_tblHesab1">
+          <End Role="tblHesab" Type="Self.tblHesab" Multiplicity="0..1" />
+          <End Role="tblVam" Type="Self.tblVam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHesab">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVam">
+              <PropertyRef Name="HesabId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LoanModelStoreContainer">
+          <EntitySet Name="tblAccount" EntityType="Self.tblAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBranch" EntityType="Self.tblBranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCostomer" EntityType="Self.tblCostomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHesab" EntityType="Self.tblHesab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPardakhtAghsat" EntityType="Self.tblPardakhtAghsat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVam" EntityType="Self.tblVam" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblBranch_tblAccount" Association="Self.FK_tblBranch_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccount" />
+            <End Role="tblBranch" EntitySet="tblBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHesab_tblCostomer" Association="Self.FK_tblHesab_tblCostomer">
+            <End Role="tblCostomer" EntitySet="tblCostomer" />
+            <End Role="tblHesab" EntitySet="tblHesab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPardakhtAghsat_tblVam" Association="Self.FK_tblPardakhtAghsat_tblVam">
+            <End Role="tblVam" EntitySet="tblVam" />
+            <End Role="tblPardakhtAghsat" EntitySet="tblPardakhtAghsat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVam_tblHesab1" Association="Self.FK_tblVam_tblHesab1">
+            <End Role="tblHesab" EntitySet="tblHesab" />
+            <End Role="tblVam" EntitySet="tblVam" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LoanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblBranches" Relationship="Self.FK_tblBranch_tblAccount" FromRole="tblAccount" ToRole="tblBranch" />
+        </EntityType>
+        <EntityType Name="tblBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BrCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BrAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccountId" Type="Int64" />
+          <NavigationProperty Name="tblAccount" Relationship="Self.FK_tblBranch_tblAccount" FromRole="tblBranch" ToRole="tblAccount" />
+        </EntityType>
+        <EntityType Name="tblCostomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeMeli" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NumberOfShenasname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SeryalOfShenasname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MahalSodour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tell" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="CodePosti" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Jender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblHesabs" Relationship="Self.FK_tblHesab_tblCostomer" FromRole="tblCostomer" ToRole="tblHesab" />
+        </EntityType>
+        <EntityType Name="tblHesab">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HesabNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HesabType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mojodi" Type="Int64" />
+          <Property Name="CostomerId" Type="Int64" />
+          <Property Name="CostomerHoghoghiId" Type="Int64" />
+          <NavigationProperty Name="tblCostomer" Relationship="Self.FK_tblHesab_tblCostomer" FromRole="tblHesab" ToRole="tblCostomer" />
+          <NavigationProperty Name="tblVams" Relationship="Self.FK_tblVam_tblHesab1" FromRole="tblHesab" ToRole="tblVam" />
+        </EntityType>
+        <EntityType Name="tblPardakhtAghsat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOfPardakht" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ShomareGhest" Type="Int32" />
+          <Property Name="VamId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="tblVam" Relationship="Self.FK_tblPardakhtAghsat_tblVam" FromRole="tblPardakhtAghsat" ToRole="tblVam" />
+        </EntityType>
+        <EntityType Name="tblVam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VamType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumberContract" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MablaghVam" Type="Int64" />
+          <Property Name="PishDaryaft" Type="Int64" />
+          <Property Name="BaqhiMande" Type="Int64" />
+          <Property Name="NerkhSod" Type="Int32" />
+          <Property Name="TedadAghsat" Type="Int32" />
+          <Property Name="MablaghGhest" Type="Int64" />
+          <Property Name="MablaghAsloFara" Type="Int64" />
+          <Property Name="Eltezam" Type="Int32" />
+          <Property Name="DateOfStart" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DateOfEnd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="HesabId" Type="Int64" />
+          <NavigationProperty Name="tblHesab" Relationship="Self.FK_tblVam_tblHesab1" FromRole="tblVam" ToRole="tblHesab" />
+          <NavigationProperty Name="tblPardakhtAghsats" Relationship="Self.FK_tblPardakhtAghsat_tblVam" FromRole="tblVam" ToRole="tblPardakhtAghsat" />
+        </EntityType>
+        <Association Name="FK_tblBranch_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblBranch" Type="Self.tblBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblBranch">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHesab_tblCostomer">
+          <End Role="tblCostomer" Type="Self.tblCostomer" Multiplicity="0..1" />
+          <End Role="tblHesab" Type="Self.tblHesab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCostomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblHesab">
+              <PropertyRef Name="CostomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVam_tblHesab1">
+          <End Role="tblHesab" Type="Self.tblHesab" Multiplicity="0..1" />
+          <End Role="tblVam" Type="Self.tblVam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHesab">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVam">
+              <PropertyRef Name="HesabId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPardakhtAghsat_tblVam">
+          <End Role="tblVam" Type="Self.tblVam" Multiplicity="1" />
+          <End Role="tblPardakhtAghsat" Type="Self.tblPardakhtAghsat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVam">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblPardakhtAghsat">
+              <PropertyRef Name="VamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LoanEntities8" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAccounts" EntityType="Self.tblAccount" />
+          <EntitySet Name="tblBranches" EntityType="Self.tblBranch" />
+          <EntitySet Name="tblCostomers" EntityType="Self.tblCostomer" />
+          <EntitySet Name="tblHesabs" EntityType="Self.tblHesab" />
+          <EntitySet Name="tblPardakhtAghsats" EntityType="Self.tblPardakhtAghsat" />
+          <EntitySet Name="tblVams" EntityType="Self.tblVam" />
+          <AssociationSet Name="FK_tblBranch_tblAccount" Association="Self.FK_tblBranch_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="tblBranch" EntitySet="tblBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHesab_tblCostomer" Association="Self.FK_tblHesab_tblCostomer">
+            <End Role="tblCostomer" EntitySet="tblCostomers" />
+            <End Role="tblHesab" EntitySet="tblHesabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVam_tblHesab1" Association="Self.FK_tblVam_tblHesab1">
+            <End Role="tblHesab" EntitySet="tblHesabs" />
+            <End Role="tblVam" EntitySet="tblVams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPardakhtAghsat_tblVam" Association="Self.FK_tblPardakhtAghsat_tblVam">
+            <End Role="tblVam" EntitySet="tblVams" />
+            <End Role="tblPardakhtAghsat" EntitySet="tblPardakhtAghsats" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LoanModelStoreContainer" CdmEntityContainer="LoanEntities8">
+          <EntitySetMapping Name="tblAccounts">
+            <EntityTypeMapping TypeName="LoanModel.tblAccount">
+              <MappingFragment StoreEntitySet="tblAccount">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBranches">
+            <EntityTypeMapping TypeName="LoanModel.tblBranch">
+              <MappingFragment StoreEntitySet="tblBranch">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BrName" ColumnName="BrName" />
+                <ScalarProperty Name="BrCode" ColumnName="BrCode" />
+                <ScalarProperty Name="BrAddress" ColumnName="BrAddress" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCostomers">
+            <EntityTypeMapping TypeName="LoanModel.tblCostomer">
+              <MappingFragment StoreEntitySet="tblCostomer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CodeMeli" ColumnName="CodeMeli" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="NumberOfShenasname" ColumnName="NumberOfShenasname" />
+                <ScalarProperty Name="SeryalOfShenasname" ColumnName="SeryalOfShenasname" />
+                <ScalarProperty Name="MahalSodour" ColumnName="MahalSodour" />
+                <ScalarProperty Name="Tell" ColumnName="Tell" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="CodePosti" ColumnName="CodePosti" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Jender" ColumnName="Jender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHesabs">
+            <EntityTypeMapping TypeName="LoanModel.tblHesab">
+              <MappingFragment StoreEntitySet="tblHesab">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HesabNumber" ColumnName="HesabNumber" />
+                <ScalarProperty Name="HesabType" ColumnName="HesabType" />
+                <ScalarProperty Name="Mojodi" ColumnName="Mojodi" />
+                <ScalarProperty Name="CostomerId" ColumnName="CostomerId" />
+                <ScalarProperty Name="CostomerHoghoghiId" ColumnName="CostomerHoghoghiId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPardakhtAghsats">
+            <EntityTypeMapping TypeName="LoanModel.tblPardakhtAghsat">
+              <MappingFragment StoreEntitySet="tblPardakhtAghsat">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateOfPardakht" ColumnName="DateOfPardakht" />
+                <ScalarProperty Name="ShomareGhest" ColumnName="ShomareGhest" />
+                <ScalarProperty Name="VamId" ColumnName="VamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVams">
+            <EntityTypeMapping TypeName="LoanModel.tblVam">
+              <MappingFragment StoreEntitySet="tblVam">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VamType" ColumnName="VamType" />
+                <ScalarProperty Name="NumberContract" ColumnName="NumberContract" />
+                <ScalarProperty Name="MablaghVam" ColumnName="MablaghVam" />
+                <ScalarProperty Name="PishDaryaft" ColumnName="PishDaryaft" />
+                <ScalarProperty Name="BaqhiMande" ColumnName="BaqhiMande" />
+                <ScalarProperty Name="NerkhSod" ColumnName="NerkhSod" />
+                <ScalarProperty Name="TedadAghsat" ColumnName="TedadAghsat" />
+                <ScalarProperty Name="MablaghGhest" ColumnName="MablaghGhest" />
+                <ScalarProperty Name="MablaghAsloFara" ColumnName="MablaghAsloFara" />
+                <ScalarProperty Name="Eltezam" ColumnName="Eltezam" />
+                <ScalarProperty Name="DateOfStart" ColumnName="DateOfStart" />
+                <ScalarProperty Name="DateOfEnd" ColumnName="DateOfEnd" />
+                <ScalarProperty Name="HesabId" ColumnName="HesabId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

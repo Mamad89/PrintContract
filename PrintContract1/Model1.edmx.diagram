@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="41c1a91c35f14456911613a59b84221a" Name="Diagram1">
+        <EntityTypeShape EntityType="LoanModel.tblAccount" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoanModel.tblBranch" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoanModel.tblCostomer" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoanModel.tblHesab" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoanModel.tblPardakhtAghsat" Width="1.5" PointX="7.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LoanModel.tblVam" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="LoanModel.FK_tblBranch_tblAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="LoanModel.FK_tblHesab_tblCostomer" ManuallyRouted="false" />
+        <AssociationConnector Association="LoanModel.FK_tblVam_tblHesab1" ManuallyRouted="false" />
+        <AssociationConnector Association="LoanModel.FK_tblPardakhtAghsat_tblVam" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

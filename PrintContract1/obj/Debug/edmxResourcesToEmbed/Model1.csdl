@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LoanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblAccount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblBranches" Relationship="Self.FK_tblBranch_tblAccount" FromRole="tblAccount" ToRole="tblBranch" />
+  </EntityType>
+  <EntityType Name="tblBranch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BrCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BrAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AccountId" Type="Int64" />
+    <NavigationProperty Name="tblAccount" Relationship="Self.FK_tblBranch_tblAccount" FromRole="tblBranch" ToRole="tblAccount" />
+  </EntityType>
+  <EntityType Name="tblCostomer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodeMeli" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NumberOfShenasname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SeryalOfShenasname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MahalSodour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tell" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="CodePosti" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Jender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblHesabs" Relationship="Self.FK_tblHesab_tblCostomer" FromRole="tblCostomer" ToRole="tblHesab" />
+  </EntityType>
+  <EntityType Name="tblHesab">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HesabNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HesabType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mojodi" Type="Int64" />
+    <Property Name="CostomerId" Type="Int64" />
+    <Property Name="CostomerHoghoghiId" Type="Int64" />
+    <NavigationProperty Name="tblCostomer" Relationship="Self.FK_tblHesab_tblCostomer" FromRole="tblHesab" ToRole="tblCostomer" />
+    <NavigationProperty Name="tblVams" Relationship="Self.FK_tblVam_tblHesab1" FromRole="tblHesab" ToRole="tblVam" />
+  </EntityType>
+  <EntityType Name="tblPardakhtAghsat">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateOfPardakht" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ShomareGhest" Type="Int32" />
+    <Property Name="VamId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="tblVam" Relationship="Self.FK_tblPardakhtAghsat_tblVam" FromRole="tblPardakhtAghsat" ToRole="tblVam" />
+  </EntityType>
+  <EntityType Name="tblVam">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VamType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumberContract" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MablaghVam" Type="Int64" />
+    <Property Name="PishDaryaft" Type="Int64" />
+    <Property Name="BaqhiMande" Type="Int64" />
+    <Property Name="NerkhSod" Type="Int32" />
+    <Property Name="TedadAghsat" Type="Int32" />
+    <Property Name="MablaghGhest" Type="Int64" />
+    <Property Name="MablaghAsloFara" Type="Int64" />
+    <Property Name="Eltezam" Type="Int32" />
+    <Property Name="DateOfStart" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="DateOfEnd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="HesabId" Type="Int64" />
+    <NavigationProperty Name="tblHesab" Relationship="Self.FK_tblVam_tblHesab1" FromRole="tblVam" ToRole="tblHesab" />
+    <NavigationProperty Name="tblPardakhtAghsats" Relationship="Self.FK_tblPardakhtAghsat_tblVam" FromRole="tblVam" ToRole="tblPardakhtAghsat" />
+  </EntityType>
+  <Association Name="FK_tblBranch_tblAccount">
+    <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+    <End Role="tblBranch" Type="Self.tblBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblBranch">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblHesab_tblCostomer">
+    <End Role="tblCostomer" Type="Self.tblCostomer" Multiplicity="0..1" />
+    <End Role="tblHesab" Type="Self.tblHesab" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCostomer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblHesab">
+        <PropertyRef Name="CostomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVam_tblHesab1">
+    <End Role="tblHesab" Type="Self.tblHesab" Multiplicity="0..1" />
+    <End Role="tblVam" Type="Self.tblVam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblHesab">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblVam">
+        <PropertyRef Name="HesabId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPardakhtAghsat_tblVam">
+    <End Role="tblVam" Type="Self.tblVam" Multiplicity="1" />
+    <End Role="tblPardakhtAghsat" Type="Self.tblPardakhtAghsat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblVam">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblPardakhtAghsat">
+        <PropertyRef Name="VamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LoanEntities8" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblAccounts" EntityType="Self.tblAccount" />
+    <EntitySet Name="tblBranches" EntityType="Self.tblBranch" />
+    <EntitySet Name="tblCostomers" EntityType="Self.tblCostomer" />
+    <EntitySet Name="tblHesabs" EntityType="Self.tblHesab" />
+    <EntitySet Name="tblPardakhtAghsats" EntityType="Self.tblPardakhtAghsat" />
+    <EntitySet Name="tblVams" EntityType="Self.tblVam" />
+    <AssociationSet Name="FK_tblBranch_tblAccount" Association="Self.FK_tblBranch_tblAccount">
+      <End Role="tblAccount" EntitySet="tblAccounts" />
+      <End Role="tblBranch" EntitySet="tblBranches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblHesab_tblCostomer" Association="Self.FK_tblHesab_tblCostomer">
+      <End Role="tblCostomer" EntitySet="tblCostomers" />
+      <End Role="tblHesab" EntitySet="tblHesabs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVam_tblHesab1" Association="Self.FK_tblVam_tblHesab1">
+      <End Role="tblHesab" EntitySet="tblHesabs" />
+      <End Role="tblVam" EntitySet="tblVams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPardakhtAghsat_tblVam" Association="Self.FK_tblPardakhtAghsat_tblVam">
+      <End Role="tblVam" EntitySet="tblVams" />
+      <End Role="tblPardakhtAghsat" EntitySet="tblPardakhtAghsats" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
